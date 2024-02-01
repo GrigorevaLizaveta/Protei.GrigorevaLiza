@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 class Note(
     var title: String,
     var text: String,
-    val remoteId: Long = 0L
+    var remoteId: Long = 0L
 )
 {
     @PrimaryKey(autoGenerate = true)

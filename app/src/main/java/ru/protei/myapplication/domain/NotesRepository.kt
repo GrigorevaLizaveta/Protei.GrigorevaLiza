@@ -18,5 +18,5 @@ interface NotesRepository {
 
     suspend fun byRemoteId(remoteId: Long): Note?
 
-
+    suspend fun byEquals(title: String, text: String): Note?
 }

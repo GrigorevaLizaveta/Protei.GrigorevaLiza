@@ -17,25 +17,32 @@ class NotesRepositoryDB(
 
     override fun loadALlNotesFlow(): Flow<List<Note>> = dao.allFlow()
 
-    override suspend fun clearDatabase() = withContext(Dispatchers.IO){
+    override suspend fun clearDatabase() = withContext(Dispatchers.IO) {
         dao.deleteAll()
     }
+
     override suspend fun fillDatabase(notes: List<Note>) {
-        notes.forEach{
+        notes.forEach {
             dao.insert(it)
         }
     }
+
     override suspend fun add(note: Note): Unit = withContext(Dispatchers.IO) {
         dao.insert(note)
     }
-    override suspend fun update(note: Note) = withContext(Dispatchers.IO){
+
+    override suspend fun update(note: Note) = withContext(Dispatchers.IO) {
         dao.update(note)
     }
 
     override suspend fun byRemoteId(remoteId: Long): Note? {
-        return withContext(Dispatchers.IO) {
-            dao.byRemoteId(remoteId)
-        }
+        return dao.byRemoteId(remoteId)
+    }
+
+    override suspend fun byEquals(title: String, text: String): Note? {
+        return dao.byEquals(title, text)
     }
 }
+
+
 

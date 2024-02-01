@@ -1,6 +1,5 @@
 package ru.protei.grigorevaed.compose.ui.notes
 
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -11,20 +10,14 @@ import ru.protei.grigorevaed.compose.domain.NotesUseCase
 
 class NotesVeiwModel(private val notesUseCase: NotesUseCase):ViewModel()
 {
-
-    val notesli = mutableStateListOf<Note>(
-        Note("Заметка 1","Текст 1"),
-        Note("Заметка 2","Текст 2"),
-        Note("Заметка 3","Текст 3"),
-    )
-
-
-    val notes = MutableStateFlow<List<Note>>(notesli)
-
+    val notes = MutableStateFlow<List<Note>>(emptyList())
 
     init {
         viewModelScope.launch {
-          //  notesUseCase.fillWithInitialNotes(notes.value)
+            //notesUseCase.fillWithInitialNotes(emptyList())
+            notesUseCase.loadRemoteNotes()
+        }
+        viewModelScope.launch {
             notesUseCase.notesFlow()
                 .collect{
                         note ->
@@ -33,16 +26,12 @@ class NotesVeiwModel(private val notesUseCase: NotesUseCase):ViewModel()
         }
     }
 
-
     var selected = mutableStateOf<Note?>(null )
-
-
 
     fun onNoteChange(title: String, text: String){
         selected.value!!.title = title
         selected.value!!.text = text
     }
-
 
     fun saveNote(note: Note){
         viewModelScope.launch {
@@ -51,9 +40,7 @@ class NotesVeiwModel(private val notesUseCase: NotesUseCase):ViewModel()
         onEditComplete()
     }
 
-
     fun onEditComplete(){
         selected.value = null
     }
-
 }

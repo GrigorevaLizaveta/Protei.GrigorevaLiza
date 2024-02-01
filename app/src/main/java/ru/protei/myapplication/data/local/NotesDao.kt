@@ -30,4 +30,7 @@ interface NotesDao {
 
     @Query("SELECT * FROM note WHERE remoteId= :remoteId")
     fun byRemoteId(remoteId: Long): Note?
+
+    @Query("SELECT * FROM Note WHERE title = :title AND text = :text")
+    fun byEquals(title: String, text: String): Note
 }

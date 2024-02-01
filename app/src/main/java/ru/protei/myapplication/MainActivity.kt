@@ -24,7 +24,6 @@ import ru.protei.myapplication.data.local.NotesRepositoryDB
 import ru.protei.myapplication.data.remote.NotesGitHubApi
 import ru.protei.myapplication.data.remote.NotesGitHubRepository
 
-
 class MainActivity : ComponentActivity() {
 
     private val database: NotesDatabase by lazy {
@@ -35,7 +34,7 @@ class MainActivity : ComponentActivity() {
             .build()
     }
 
-    var httpClient = OkHttpClient.Builder()
+    var httpClient: OkHttpClient = OkHttpClient.Builder()
         .addInterceptor { chain ->
         val request: Request = chain.request().newBuilder()
         .addHeader (
