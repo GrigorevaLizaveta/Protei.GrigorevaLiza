@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         val request: Request = chain.request().newBuilder()
         .addHeader (
             "Authorization",
-            "Bearer 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"
+            "Bearer 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"
         )
             .build()
         chain.proceed(request)

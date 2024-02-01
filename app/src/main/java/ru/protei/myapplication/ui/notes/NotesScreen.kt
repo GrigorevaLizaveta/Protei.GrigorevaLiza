@@ -142,10 +142,12 @@ fun EditNote(noteChange: ()-> Unit, select: MutableState<Note?>){
             noteChange()
         },
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.tertiary,
             unfocusedBorderColor = MaterialTheme.colorScheme.secondary),
         textStyle = MaterialTheme.typography.bodyLarge
-            .copy(color = MaterialTheme.colorScheme.secondary),
+            .copy(
+                color = MaterialTheme.colorScheme.secondary,
+                fontWeight = FontWeight.Bold
+            ),
         modifier = Modifier
             .padding(
                 top = 10.dp,
@@ -162,8 +164,7 @@ fun EditNote(noteChange: ()-> Unit, select: MutableState<Note?>){
                 color = MaterialTheme.colorScheme.onBackground) },
         value = text,
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = MaterialTheme.colorScheme.tertiary,
-            unfocusedBorderColor = MaterialTheme.colorScheme.surface
+            unfocusedBorderColor = MaterialTheme.colorScheme.onPrimary
         ),
         modifier = Modifier
             .padding(

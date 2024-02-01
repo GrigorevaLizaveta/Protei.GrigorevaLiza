@@ -1,5 +1,6 @@
 package ru.protei.grigorevaed.compose.ui.notes
 
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -43,4 +44,5 @@ class NotesVeiwModel(private val notesUseCase: NotesUseCase):ViewModel()
     fun onEditComplete(){
         selected.value = null
     }
+
 }
