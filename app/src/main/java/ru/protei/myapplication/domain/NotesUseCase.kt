@@ -6,8 +6,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 import ru.protei.myapplication.data.local.NotesRepositoryDB
 import ru.protei.myapplication.data.remote.NotesGitHubRepository
+import javax.inject.Inject
 
-class NotesUseCase(
+class NotesUseCase @Inject constructor(
     private val notesRepo: NotesRepositoryDB,
     private val notesApi: NotesGitHubRepository
 ){

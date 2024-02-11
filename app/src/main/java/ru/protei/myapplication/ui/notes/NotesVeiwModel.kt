@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import ru.protei.grigorevaed.compose.domain.Note
 import ru.protei.grigorevaed.compose.domain.NotesUseCase
 
-class NotesVeiwModel(private val notesUseCase: NotesUseCase):ViewModel()
+class NotesVeiwModel (private val notesUseCase: NotesUseCase):ViewModel()
 {
     val notes = MutableStateFlow<List<Note>>(emptyList())
 

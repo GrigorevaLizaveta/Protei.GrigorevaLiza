@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -55,6 +56,11 @@ dependencies {
     val retrofitVersion= "2.9.0"
     implementation ("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation ("com.squareup.retrofit2:converter-gson:$retrofitVersion")
+
+    val hilt_version= "2.50"
+    implementation ("com.google.dagger:hilt-android:$hilt_version")
+    implementation ("com.google.dagger:hilt-android-compiler:$hilt_version")
+    kapt("com.google.dagger:hilt-compiler:$hilt_version")
 
     annotationProcessor("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-runtime:2.6.1")
