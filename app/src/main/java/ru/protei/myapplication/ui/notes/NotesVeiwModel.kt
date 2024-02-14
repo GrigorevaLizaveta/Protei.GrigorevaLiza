@@ -4,12 +4,15 @@ import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import ru.protei.grigorevaed.compose.domain.Note
 import ru.protei.grigorevaed.compose.domain.NotesUseCase
+import javax.inject.Inject
 
-class NotesVeiwModel (private val notesUseCase: NotesUseCase):ViewModel()
+@HiltViewModel
+class NotesVeiwModel @Inject constructor(private val notesUseCase: NotesUseCase):ViewModel()
 {
     val notes = MutableStateFlow<List<Note>>(emptyList())
 
